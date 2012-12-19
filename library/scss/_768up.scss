@@ -39,9 +39,16 @@ HEADER SYTLES
 NAVIGATION STYLES
 *********************/
 
+$subnavwidth: 200px;
+
 .nav {
 	background: #eee;
 	border: 0;
+	margin: 0;
+	
+	ul {
+		margin: 0;
+	}
 
 	li {
 		float: left;
@@ -68,20 +75,22 @@ NAVIGATION STYLES
 		*/
 		ul.sub-menu,
 		ul.children {
-			width: 200px;
+			width: $subnavwidth;
+			height: auto;
 			border: 1px solid #ccc;
 			border-top: 0;
 			position: absolute;
-			display: none;
+			clip: rect(1px, 1px, 1px, 1px);
 			z-index: 8999;
 
 			li {
-
+				width: $subnavwidth;
 				a {
 					padding-left: 10px;
+					padding-right: 10px;
 					border-right: 0;
-					display: block;
-					width: 180px;
+					left: 0;
+					width: $subnavwidth - 2px;
 					border-bottom: 1px solid #ccc;
 
 					&:hover,
@@ -98,13 +107,10 @@ NAVIGATION STYLES
 						border-bottom: 0;
 					}
 				}
-
-				/*
-				if you need to go deeper, go nuts
-				just remember deeper menus suck
-				for usability. k, bai.
-				*/
-				ul {}
+				
+				ul {
+					clip: rect(1px, 1px, 1px, 1px);
+				}
 			}
 
 			/* highlight sub-menu current page */
@@ -118,7 +124,35 @@ NAVIGATION STYLES
 		/* showing sub-menus */
 		&:hover ul {
 			top: auto;
-			display: block;
+			left: auto;
+			clip: auto;
+			ul {
+				clip: rect(1px, 1px, 1px, 1px);
+			}
+			li:hover ul {
+				top: 0;
+				left: $subnavwidth - 2px;
+				clip: auto;
+				ul {
+					clip: rect(1px, 1px, 1px, 1px);
+				}
+				li:hover ul {
+					left: $subnavwidth - 2px;
+					clip: auto;
+						ul {
+						clip: rect(1px, 1px, 1px, 1px);
+					}
+					li:hover ul {
+						left: $subnavwidth - 2px;
+						clip: auto;
+					}
+					/*
+					if you need to go deeper, go nuts
+					just remember deeper menus suck
+					for usability. k, bai.
+					*/
+				}
+			}
 		}
 
 	} /* end .menu ul li */

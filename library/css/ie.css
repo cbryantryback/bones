@@ -314,9 +314,12 @@ NAVIGATION STYLES
 .nav {
   background: #eee;
   border: 0;
+  margin: 0;
   /* end .menu ul li */
   /* highlight current page */
   /* end current highlighters */ }
+  .nav ul {
+    margin: 0; }
   .nav li {
     float: left;
     position: relative;
@@ -335,32 +338,55 @@ NAVIGATION STYLES
     .nav li ul.sub-menu,
     .nav li ul.children {
       width: 200px;
+      height: auto;
       border: 1px solid #ccc;
       border-top: 0;
       position: absolute;
-      display: none;
+      clip: rect(1px, 1px, 1px, 1px);
       z-index: 8999;
       /* highlight sub-menu current page */ }
       .nav li ul.sub-menu li,
       .nav li ul.children li {
-        /*
-        if you need to go deeper, go nuts
-        just remember deeper menus suck
-        for usability. k, bai.
-        */ }
+        width: 200px; }
         .nav li ul.sub-menu li a,
         .nav li ul.children li a {
           padding-left: 10px;
+          padding-right: 10px;
           border-right: 0;
-          display: block;
-          width: 180px;
+          left: 0;
+          width: 198px;
           border-bottom: 1px solid #ccc; }
         .nav li ul.sub-menu li:last-child a,
         .nav li ul.children li:last-child a {
           border-bottom: 0; }
+        .nav li ul.sub-menu li ul,
+        .nav li ul.children li ul {
+          clip: rect(1px, 1px, 1px, 1px); }
     .nav li:hover ul {
       top: auto;
-      display: block; }
+      left: auto;
+      clip: auto; }
+      .nav li:hover ul ul {
+        clip: rect(1px, 1px, 1px, 1px); }
+      .nav li:hover ul li:hover ul {
+        top: 0;
+        left: 198px;
+        clip: auto; }
+        .nav li:hover ul li:hover ul ul {
+          clip: rect(1px, 1px, 1px, 1px); }
+        .nav li:hover ul li:hover ul li:hover ul {
+          left: 198px;
+          clip: auto;
+          /*
+          if you need to go deeper, go nuts
+          just remember deeper menus suck
+          for usability. k, bai.
+          */ }
+          .nav li:hover ul li:hover ul li:hover ul ul {
+            clip: rect(1px, 1px, 1px, 1px); }
+          .nav li:hover ul li:hover ul li:hover ul li:hover ul {
+            left: 198px;
+            clip: auto; }
 
 /* end .nav */
 /*********************
